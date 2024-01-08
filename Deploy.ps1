@@ -8,7 +8,8 @@ $additionalPaths = @(
 # Check if all required paths exist
 foreach ($pathToAdd in $additionalPaths) {
     if (-not (Test-Path -Path $pathToAdd -PathType Container)) {
-        throw "Path not found: $pathToAdd"
+        Write-Host "Path not found: $pathToAdd"
+        exit 1  # Abort the script with an error code
     }
 }
 
@@ -27,17 +28,19 @@ $vsixFileName = "vba-subroutine-extractor-1.0.0.vsix"
 $vsixFilePath = Join-Path -Path $PSScriptRoot -ChildPath $vsixFileName
 
 # Step 1: Git Stage, Commit, and Push
-$gitStageCommitPushResult = Git-StageCommitPush
+Git-StageCommitPush
 
-if ($null -eq $gitStageCommitPushResult) {
-    throw "Error in Git staging, committing, or pushing. Aborting deployment."
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Error in Git staging, committing, or pushing. Aborting deployment."
+    exit 1  # Abort the script with an error code
 }
 
 # Step 2: Package your extension using vsce
-$vscePackageResult = vsce package
+vsce package
 
-if ($null -eq $vscePackageResult) {
-    throw "Error in packaging the extension using vsce. Aborting deployment."
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Error in packaging the extension using vsce. Aborting deployment."
+    exit 1  # Abort the script with an error code
 }
 
 # Step 3: Install the extension globally in VSCode
