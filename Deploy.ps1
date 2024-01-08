@@ -19,7 +19,7 @@ Write-Host $env:Path
 Git-StageCommitPush
 
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Error in Git staging, committing, or pushing. Aborting deployment."
+    Write-Host "$ansiRed Error in Git staging, committing, or pushing. Aborting deployment. $ansiReset"
     exit 1
 }
 
@@ -27,7 +27,7 @@ if ($LASTEXITCODE -ne 0) {
 vsce package
 
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Error in packaging the extension using vsce. Aborting deployment."
+    Write-Host "$ansiRed Error in packaging the extension using vsce. Aborting deployment. $ansiReset"
     exit 1
 }
 
