@@ -15,10 +15,6 @@ foreach ($pathToAdd in $additionalPaths) {
 Write-Host "Updated PATH environment variable:"
 Write-Host $env:Path
 
-# Define the path to your VSIX extension file
-$vsixFileName = "vba-subroutine-extractor-1.0.0.vsix"
-$vsixFilePath = Join-Path -Path $PSScriptRoot -ChildPath $vsixFileName
-
 # Step 1: Git Stage, Commit, and Push
 Git-StageCommitPush
 
@@ -37,7 +33,7 @@ if ($LASTEXITCODE -ne 0) {
 
 # Step 3: Install the extension globally in VSCode
 # Replace with your extension ID if needed
-code --install-extension $vsixFilePath
+code --install-extension "C:\Users\glenj\vba-subroutine-extractor\vba-subroutine-extractor-1.0.0.vsix"
 
 # Optional: Show a success message
 Write-Host "Deployment complete. Extension installed and enabled globally."
