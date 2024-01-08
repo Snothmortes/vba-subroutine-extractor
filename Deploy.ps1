@@ -12,6 +12,9 @@ foreach ($pathToAdd in $additionalPaths) {
     }
 }
 
+Write-Host "Updated PATH environment variable:"
+Write-Host $env:Path
+
 # Define the path to your VSIX extension file
 $vsixFileName = "vba-subroutine-extractor-1.0.0.vsix"
 $vsixFilePath = Join-Path -Path $PSScriptRoot -ChildPath $vsixFileName
