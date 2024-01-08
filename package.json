@@ -19,6 +19,9 @@
       }
     ]
   },
+  "repository": {
+    "url": "https://github.com/Snothmortes/vba-subroutine-extractor"
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
