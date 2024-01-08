@@ -2,7 +2,7 @@
   "name": "vba-subroutine-extractor",
   "displayName": "VBA Subroutine Extractor",
   "description": "A VSCode extension to extract the name of the VBA subroutine at the current cursor position.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.85.0"
   },
